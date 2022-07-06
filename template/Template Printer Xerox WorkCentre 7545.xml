@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.4</version>
+    <date>2022-06-02T10:54:19Z</date>
+    <groups>
+        <group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
+            <name>Templates</name>
+        </group>
+        <group>
+            <uuid>58afa722676b4fba86702054223316d9</uuid>
+            <name>Templates/Printers</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>8646b80a8f7e43269fd24ee66b87fb97</uuid>
+            <template>Template Printer Xerox WorkCentre 7545_printvpu</template>
+            <name>Template Printer Xerox WorkCentre 7545_printvpu</name>
+            <description>7545 7855 C8045</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+                <group>
+                    <name>Templates/Printers</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>34d4ce04a6514629820b33454e02545e</uuid>
+                    <name>Cartridge toner level % - black</name>
+                    <type>DEPENDENT</type>
+                    <key>black.cartridge.toner</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.toner_level_black</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>e2bf9b9a5b514b8281a07d92628c95b1</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/black.cartridge.toner)=0</expression>
+                            <name>Empty cartridge toner - black {HOST.IP}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>e8ad0f3f22bf4812ae05fb680d853cc1</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/black.cartridge.toner)&lt;5</expression>
+                            <name>Low cartridge toner - black {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>cee86ee90e104e78a6797643416a1fec</uuid>
+                    <name>Cartridge toner level % - cyan</name>
+                    <type>DEPENDENT</type>
+                    <key>cyan.cartridge.toner</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.toner_level_cyan</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>8b42cdd1b58f4c3d84bf6b9c71b037e4</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/cyan.cartridge.toner)=0</expression>
+                            <name>Empty cartridge toner - cyan {HOST.IP}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>7d5d104b54104308b038d01e5f4d02bd</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/cyan.cartridge.toner)&lt;5</expression>
+                            <name>Low cartridge toner - cyan {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>56e1e3a3438247ce990130627ef50db4</uuid>
+                    <name>Current drum toner level % - black</name>
+                    <type>DEPENDENT</type>
+                    <key>drum.black.now</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.Current_drum_toner_level_black</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>f65d940c348a4b5682a8815ba02c7340</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/drum.black.now)&lt;5</expression>
+                            <name>Low drum toner - black {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>91e18e81e5cf41ba86597d4be46d7a3d</uuid>
+                    <name>Current drum toner level % - cyan</name>
+                    <type>DEPENDENT</type>
+                    <key>drum.cyan.now</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.Current_drum_toner_level_cyan</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>084b4541075a491abbfdfee129cadf5d</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/drum.cyan.now)&lt;5</expression>
+                            <name>Low drum toner - cyan {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>8dd4b0459db946dd8aa4a6b2099257ab</uuid>
+                    <name>Current drum toner level % - magenta</name>
+                    <type>DEPENDENT</type>
+                    <key>drum.magenta.now</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.Current_drum_toner_level_magenta</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>bc76eeae713942c782dba0aa9fae99b9</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/drum.magenta.now)&lt;5</expression>
+                            <name>Low drum toner - magenta {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>ef8bc935d40d4eb99fcb72765ea81953</uuid>
+                    <name>Current drum toner level % - yellow</name>
+                    <type>DEPENDENT</type>
+                    <key>drum.yellow.now</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.Current_drum_toner_level_yellow</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>45a07805f7934d5e91dc43d246e969de</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/drum.yellow.now)&lt;5</expression>
+                            <name>Low drum toner - yellow {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>3df9e4f2a0ad4cd7af04dfc7e681e3f4</uuid>
+                    <name>Cartridge toner level % - magenta</name>
+                    <type>DEPENDENT</type>
+                    <key>magenta.cartridge.toner</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.toner_level_magenta</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>51ee8d73c69146c4bcc97147716baf4c</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/magenta.cartridge.toner)=0</expression>
+                            <name>Empty cartridge toner - magenta {HOST.IP}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>95e1be603f484800a718084e27da70b6</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/magenta.cartridge.toner)&lt;5</expression>
+                            <name>Low cartridge toner - magenta {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>ed262cbe00c748258ae60816fd51432c</uuid>
+                    <name>Printer model</name>
+                    <type>DEPENDENT</type>
+                    <key>model</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <inventory_link>MODEL</inventory_link>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.printer_model</parameter>
+                            </parameters>
+                        </step>
+                        <step>
+                            <type>RTRIM</type>
+                            <parameters>
+                                <parameter> v1 Multifunction System</parameter>
+                            </parameters>
+                        </step>
+                        <step>
+                            <type>RTRIM</type>
+                            <parameters>
+                                <parameter>  Multifunction Printer</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <uuid>422472be8a1949b9bcc79638c94b207a</uuid>
+                    <name>Printer location</name>
+                    <type>DEPENDENT</type>
+                    <key>printer.location</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <inventory_link>LOCATION</inventory_link>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.printer_location</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <uuid>ec2de73b7da44c8eba43509c41b392ac</uuid>
+                    <name>Second Bias Transfer Roller %</name>
+                    <type>DEPENDENT</type>
+                    <key>second.btr.transfer.roller.percent</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.second_bias_transfer_roller</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>8b7cfbfc5e784285ae43653804256b8b</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/second.btr.transfer.roller.percent)=0</expression>
+                            <name>Второй ролик переноса смещения 0% {HOST.IP}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>e320a656a77c4da39cfa143d9118549c</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/second.btr.transfer.roller.percent)=5</expression>
+                            <name>Второй ролик переноса смещения 5% {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>8f76feff02ab43e69a5de6e72f2a5823</uuid>
+                    <name>Serial number</name>
+                    <type>DEPENDENT</type>
+                    <key>serial.number</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <inventory_link>SERIALNO_A</inventory_link>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.serial_number</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                </item>
+                <item>
+                    <uuid>be3d368ae03142fb93ad2fcc4a70fab6</uuid>
+                    <name>Transfer Belt Cleaner %</name>
+                    <type>DEPENDENT</type>
+                    <key>transfer.belt.cleaner.percent</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.transfer_belt_cleaner</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>b3e80a9e55804a2bb3210d4af7cb7eb6</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/transfer.belt.cleaner.percent)=0</expression>
+                            <name>Очиститель ремня переноса 0% {HOST.IP}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>5b37718e818045dd933c1304e6685287</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/transfer.belt.cleaner.percent)=5</expression>
+                            <name>Очиститель ремня переноса 5% {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>ca3d56fc63e74e6baa8f5ba02119a728</uuid>
+                    <name>data</name>
+                    <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <preprocessing>
+                        <step>
+                            <type>JAVASCRIPT</type>
+                            <parameters>
+                                <parameter>function qwe(value){
+    const ip = '{$HIP}';
+    var index_a = value.search(ip);
+    var index_a = index_a -8
+    var index_b
+
+    var count = index_a;
+    while(value[count] != '}'){
+        count++;
+        index_b = count;
+    }
+
+return value.substring(index_a,index_b +1)}
+
+return qwe(value)</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>45f39b643d9d427481fa784d6601bd05</uuid>
+                    <name>Toner Waste Container in %</name>
+                    <type>DEPENDENT</type>
+                    <key>waste.toner</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.toner_waste_container</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>c220044f797f4eb2a7a0708ffba13a8c</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/waste.toner)=0</expression>
+                            <name>Toner waste container full {HOST.IP}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>cd39d08eaac5473f9440e3f1d5feeb28</uuid>
+                    <name>Cartridge toner level % - yellow</name>
+                    <type>DEPENDENT</type>
+                    <key>yellow.cartridge.toner</key>
+                    <delay>0</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <units>%</units>
+                    <preprocessing>
+                        <step>
+                            <type>JSONPATH</type>
+                            <parameters>
+                                <parameter>$.toner_level_yellow</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <master_item>
+                        <key>vfs.file.contents[/samba/public/data/print/json7545,utf-8]</key>
+                    </master_item>
+                    <triggers>
+                        <trigger>
+                            <uuid>7fed2ca1e8b644378931b031445ce7b3</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/yellow.cartridge.toner)=0</expression>
+                            <name>Empty cartridge toner - yellow {HOST.IP}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>335a7dd7e27c4f608e728707efba481d</uuid>
+                            <expression>last(/Template Printer Xerox WorkCentre 7545_printvpu/yellow.cartridge.toner)&lt;5</expression>
+                            <name>Low cartridge toner - yellow {HOST.IP}</name>
+                            <priority>INFO</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <tags>
+                <tag>
+                    <tag>L</tag>
+                    <value>{INVENTORY.LOCATION}</value>
+                </tag>
+            </tags>
+        </template>
+    </templates>
+</zabbix_export>
